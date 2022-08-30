@@ -1,6 +1,6 @@
 const http = require("http");
 var url = require('url');
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 8080;
 let currentTurn = 0
 let maxTurns = 1000
 let board = [
@@ -182,11 +182,12 @@ const server = http.createServer(async (req, res) => {
                 })
             }
             res.write(JSON.stringify(retrieved))
-            res.end();
+            
         } else {
             const result = playMatch()
             res.write(JSON.stringify(result));
         }
+        res.end();
 
     }
     else {
